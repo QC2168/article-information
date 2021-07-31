@@ -20,5 +20,7 @@ module.exports = {
     'no-console': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
+    'no-unused-vars': 'off',
+    'no-undef': 'off',
   },
 };

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+.o-6{
+  opacity: .95;
+  background: rgba(255, 255, 255, .7);
+  backdrop-filter: blur(10px);
+}
+.inp-content[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
+}
+
+.inp-content-fh{
+  @apply h-96;
+}
+

@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { Configuration as WebpackConfiguration } from 'webpack';
+import webpack, { Configuration as WebpackConfiguration } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
@@ -12,9 +12,9 @@ const config: Configuration = {
   entry: {
     main: './src/main.ts',
     index: './src/pages/index/index.ts', // index页面
-    hello: './src/pages/hello/hello.ts', // hello页面
   },
   output: {
+    publicPath: './',
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name]/[name].[contenthash].js',
     clean: true,
@@ -25,6 +25,7 @@ const config: Configuration = {
     contentBase: path.join(__dirname, 'dist'),
     port: 8088,
     stats: 'errors-only',
+
   },
   module: {
     rules: [
@@ -42,7 +43,7 @@ const config: Configuration = {
 
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -63,17 +64,15 @@ const config: Configuration = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
     new HtmlWebpackPlugin({
       title: 'index',
       filename: 'index.html',
       template: './src/pages/index/index.html',
       chunks: ['index', 'main'],
-    }),
-    new HtmlWebpackPlugin({
-      title: 'hello',
-      filename: 'hello.html',
-      template: './src/pages/hello/hello.html',
-      chunks: ['hello', 'main'],
     }),
     new ESLintPlugin({
       extensions: ['js', 'ts'],

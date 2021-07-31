@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
 </head>
-<body>
-    <h2>
-        index.html
-    </h2>
+<body class="bg-gray-300 flex justify-center items-center">
+<div id="container" class="container mx-auto flex flex-nowrap">
+  <div id="article" class="flex-grow h-auto rounded-lg shadow-sm bg-white overflow-hidden p-10 mr-2 relative">
+    <img src="gitHub.png" class="top-4 right-4 absolute w-8 h-8" alt=""/>
+    <p class="font-mono text-3xl font-bold tracking-wider leading-tight text-center mb-5 uppercase">
+      article
+    </p>
+    <div contenteditable="plaintext-only" placeholder="Write something ..." id="inp-content"
+         class="max-h-full break-all text-justify bg-gray-50 border-2 hover:bg-gray-100 border-gray-200 ease-out block transition-all duration-700 h-20 max-h-96 py-3 px-4 overflow-hidden font-mono cursor-auto rounded-xl focus:h-96 focus:border-indigo-400"
+         style="outline:none;"></div>
+  </div>
+
+  <div id="resultBox"
+       class="overflow-hidden w-0 flex-none rounded-lg transition-all duration-700 shadow-sm py-10 bg-white flex flex-col items-center">
+    <p class="font-mono text-3xl font-bold tracking-wider leading-tight text-center mb-5 uppercase">
+      result
+    </p>
+    <div id="resultChart" style="width: 20rem;height: 25rem;"></div>
+  </div>
+</div>
 </body>
 </html>
