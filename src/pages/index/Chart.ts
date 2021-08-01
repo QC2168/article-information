@@ -17,48 +17,54 @@ type ECOption = echarts.ComposeOption<PieSeriesOption>;
 echarts.use(
   [TooltipComponent, LegendComponent, PieChart, CanvasRenderer],
 );
+export class RChart {
+  private chartInstance : echarts.ECharts;
 
-// 渲染图
-export const renderChart = (chartDom:HTMLElement, data: dataType[]):void => {
-  const Chart = echarts.init(chartDom!);
-  const option: ECOption = {
-    tooltip: {
-      trigger: 'item',
-    },
-    legend: {
-      top: '5%',
-      left: 'center',
-    },
-    series: [
-      {
-        name: '占比',
-        type: 'pie',
-        radius: ['40%', '70%'],
-        avoidLabelOverlap: false,
-        itemStyle: {
-          borderRadius: 10,
-          borderColor: '#fff',
-          borderWidth: 2,
-        },
-        label: {
-          show: false,
-          position: 'center',
-        },
-        emphasis: {
-          scale: true,
-          scaleSize: 5,
-          label: {
-            show: true,
-            fontSize: '15',
-            fontWeight: 'bold',
-          },
-        },
-        labelLine: {
-          show: false,
-        },
-        data,
+  constructor(dom:HTMLElement) {
+    this.chartInstance = echarts.init(dom);
+  }
+
+  public renderChart=(data:dataType[]):void => {
+    const option: ECOption = {
+      tooltip: {
+        trigger: 'item',
       },
-    ],
-  };
-  Chart.setOption(option);
-};
+      legend: {
+        top: '5%',
+        left: 'center',
+      },
+      series: [
+        {
+          name: '占比',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 12,
+            borderColor: '#fff',
+            borderWidth: 2,
+          },
+          label: {
+            show: false,
+            position: 'center',
+            formatter: '{d}%',
+          },
+          emphasis: {
+            scale: true,
+            scaleSize: 5,
+            label: {
+              show: true,
+              fontSize: '18',
+              fontWeight: 'bold',
+            },
+          },
+          labelLine: {
+            show: false,
+          },
+          data,
+        },
+      ],
+    };
+    this.chartInstance.setOption(option);
+  }
+}

@@ -14,7 +14,6 @@ const config: Configuration = {
     index: './src/pages/index/index.ts', // index页面
   },
   output: {
-    publicPath: './',
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name]/[name].[contenthash].js',
     clean: true,
