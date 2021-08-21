@@ -22,7 +22,7 @@ const config: Configuration = {
     host: '0.0.0.0',
     useLocalIp: true,
     contentBase: path.join(__dirname, 'dist'),
-    port: 8088,
+    port: 8090,
     stats: 'errors-only',
 
   },
@@ -51,6 +51,12 @@ const config: Configuration = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+        },
       },
       {
         test: /\.tsx?$/,
