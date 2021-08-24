@@ -2,7 +2,7 @@ import './index.scss';
 import CheckArticle from './CheckArticle';
 import {
   dataType, RChart,
-} from './Chart';
+} from './RChart';
 
 // 添加事件
 $(($) => {
@@ -22,9 +22,11 @@ $(($) => {
       RC.renderChart(data);
       // 添加result
       $('#resultBox').removeClass('w-0').addClass('w-2/6');
+      $('#resultChart').removeClass('hidden');
       $('#inp-content').addClass('h-96');
     } else {
       $('#inp-content').removeClass('h-96');
+      $('#resultChart').addClass('hidden');
       $('#resultBox').removeClass('w-2/6').addClass('w-0');
     }
   });

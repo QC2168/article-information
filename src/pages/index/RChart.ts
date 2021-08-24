@@ -1,4 +1,6 @@
-import * as echarts from 'echarts/core';
+import {
+  ComposeOption, init, ECharts, use,
+} from 'echarts/core';
 import {
   TooltipComponent,
   LegendComponent,
@@ -13,19 +15,20 @@ import {
 export type dataType = {
   value: number, name: string
 }
-type ECOption = echarts.ComposeOption<PieSeriesOption>;
-echarts.use(
+
+use(
   [TooltipComponent, LegendComponent, PieChart, CanvasRenderer],
 );
-export class RChart {
-  private chartInstance : echarts.ECharts;
 
-  constructor(dom:HTMLElement) {
-    this.chartInstance = echarts.init(dom);
+export class RChart {
+  private chartInstance: ECharts;
+
+  constructor(dom: HTMLElement) {
+    this.chartInstance = init(dom);
   }
 
-  public renderChart=(data:dataType[]):void => {
-    const option: ECOption = {
+  public renderChart = (data: dataType[]): void => {
+    const option: ComposeOption<PieSeriesOption> = {
       tooltip: {
         trigger: 'item',
       },
@@ -66,5 +69,5 @@ export class RChart {
       ],
     };
     this.chartInstance.setOption(option);
-  }
+  };
 }

@@ -1,5 +1,5 @@
 import * as path from 'path';
-import webpack, { Configuration as WebpackConfiguration } from 'webpack';
+import { ProvidePlugin, Configuration as WebpackConfiguration } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
@@ -69,7 +69,7 @@ const config: Configuration = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
-    new webpack.ProvidePlugin({
+    new ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
     }),

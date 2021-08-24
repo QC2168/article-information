@@ -11,12 +11,8 @@ html,body{
   background: rgba(255, 255, 255, .7);
   backdrop-filter: blur(10px);
 }
-.inp-content[placeholder]:empty:before {
+#inp-content[placeholder]:empty:before {
   content: attr(placeholder);
   color: #555;
-}
-
-.inp-content-fh{
-  @apply h-96;
 }
 
